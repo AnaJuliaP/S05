@@ -1,8 +1,0 @@
-{
-  "name": "Meu Ambiente Dev",
-  "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:18",
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-  },
-  "postCreateCommand": "npm install"
-}
