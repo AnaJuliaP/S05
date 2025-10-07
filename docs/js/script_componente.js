@@ -39,7 +39,6 @@ function temaDark() {
   }
 }
 
-// Lista de eventos
 const eventos = [
     {
         id: 1,
@@ -85,7 +84,6 @@ const eventos = [
 
 const carousel = document.querySelector('.carousel');
 
-// Função para criar os cards
 function createCards() {
     eventos.forEach(event => {
         const card = document.createElement('div');
@@ -105,18 +103,14 @@ function createCards() {
     });
 }
 
-// Inicializando os cards
 createCards();
 
-// Controle do carrossel
 let index = 0;
 
-// Função para atualizar a posição do carrossel
 function updateCarousel() {
     carousel.style.transform = `translateX(-${index * 100}%)`;
 }
 
-// Funções para navegar
 function nextCard() {
     index = (index + 1) % eventos.length;
     updateCarousel();
@@ -127,11 +121,9 @@ function prevCard() {
     updateCarousel();
 }
 
-// Eventos dos botões
 document.getElementById('nextBtn').addEventListener('click', nextCard);
 document.getElementById('prevBtn').addEventListener('click', prevCard);
 
-// Arrastar no celular
 let startX;
 carousel.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
@@ -142,10 +134,26 @@ carousel.addEventListener('touchend', (e) => {
     if (endX - startX > 50) prevCard();
 });
 
-// Passagem automática a cada 5 segundos
 let autoSlide = setInterval(nextCard, 5000);
 
-// Pausar autoplay ao passar o mouse
 carousel.addEventListener('mouseenter', () => clearInterval(autoSlide));
 carousel.addEventListener('mouseleave', () => autoSlide = setInterval(nextCard, 5000));
+
+function aplicarCoresNotas() {
+  const notas = document.querySelectorAll('.lable-nota');
+  notas.forEach(el => {
+    const valor = parseFloat(el.getAttribute('data-nota'));
+    el.classList.remove('vermelho', 'laranja', 'verde');
+
+    if (valor < 6) {
+      el.classList.add('vermelho');
+    } else if (valor >= 6 && valor < 8) {
+      el.classList.add('laranja');
+    } else {
+      el.classList.add('verde');
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', aplicarCoresNotas);
 

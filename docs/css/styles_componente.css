@@ -208,3 +208,24 @@ button {
 
 #prevBtn { left: 10px; }
 #nextBtn { right: 10px; }
+
+.lable-nota {
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 5px;
+  font-weight: bold;
+}
+
+.lable-nota.vermelho {
+  background-color: red;
+}
+
+.lable-nota.laranja {
+  background-color: orange;
+}
+
+.lable-nota.verde {
+  background-color: green;
+}
